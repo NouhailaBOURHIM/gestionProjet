@@ -34,11 +34,6 @@ public class TacheController {
          tacheService.deleteTachesOfProjet(id);
          return "tous les taches du projet sont suprimées";
      }
-
-     @GetMapping("/getAllTaches")
-    public List<Tache> getTaches()
-     {
-         return tacheRepository.findAll();
-     }
+     
 
 }
