@@ -6,16 +6,20 @@ import com.example.gestionprojet.entity.Projet;
 import com.example.gestionprojet.entity.Tache;
 import com.example.gestionprojet.mapper.ProjetMapper;
 import com.example.gestionprojet.mapper.TacheMapper;
+import com.example.gestionprojet.repository.ProjetRepository;
 import com.example.gestionprojet.repository.TacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 @Service
 public class TacheServiceImpl implements TacheService{
     @Autowired
     TacheRepository tacheRepository;
+    @Autowired
+    ProjetRepository projetRepository;
 
     @Override
     public List<TacheDto> chercherTacheBy(String titre) {
@@ -36,7 +40,10 @@ public class TacheServiceImpl implements TacheService{
 
     @Override
     public void deleteTachesOfProjet(int id) {
-        tacheRepository.deleteAllTachesOfProjet(id);
+        Optional<Projet> projet=projetRepository.findById(id);
+        Projet projet1=projet.get();
+        List<Tache> taches=projet1.getTaches();
+        tacheRepository.deleteAll(taches);
     }
 
 }

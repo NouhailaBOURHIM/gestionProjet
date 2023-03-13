@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur,Integer> {
     public List<Utilisateur> findByNomContainingOrderById(String name);
+
 }

@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface ProjetRepository extends JpaRepository<Projet,Integer> {
     public List<Projet> findByTitreContainingOrderById(String name);
+    public List<Projet> findAllByUtilisateurId(int id);
 }

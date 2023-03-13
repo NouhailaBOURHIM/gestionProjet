@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UtilisateurService {
     public List<UtilisateurDto> chercherUtilisateurBy(String name);
+    public void deleteUtilisateur(int id);
 }

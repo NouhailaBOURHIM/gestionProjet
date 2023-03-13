@@ -4,9 +4,7 @@ import com.example.gestionprojet.dto.UtilisateurDto;
 import com.example.gestionprojet.entity.Utilisateur;
 import com.example.gestionprojet.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,11 @@ public class UtilisateurController {
     {
         return utilisateurService.chercherUtilisateurBy(name);
     }
+     @DeleteMapping("/supprimerUtilisateur")
+    public String supprimerUtilisateur(@RequestParam int id)
+     {
+         utilisateurService.deleteUtilisateur(id);
+         return "succès de suppression";
+     }
 
 }

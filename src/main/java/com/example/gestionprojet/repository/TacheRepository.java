@@ -12,6 +12,4 @@ import java.util.List;
 @Repository
 public interface TacheRepository extends JpaRepository<Tache,Integer> {
     public List<Tache> findByTitreContainingOrderById(String name);
-    @Query("select t from Tache t where t.projet.id=:id")
-    public void deleteAllTachesOfProjet(@Param("id") int id);
 }
